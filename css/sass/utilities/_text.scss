@@ -1,0 +1,40 @@
+// Hidden text (h1) using classes:
+// .visually-hidden
+
+// Font Size
+$font-size-list: 8 10 12 13 14 15 16 18 20 22 24 25 26 28 30;
+.fs {
+  @each $item in $font-size-list {
+    &-#{$item} {
+      font-size: #{$item}px !important;
+    }
+  }
+}
+
+// Font Weight
+$font-weight-list: 300 400 500 600 700 800 900;
+.fw {
+  @each $item in $font-weight-list {
+    &-#{$item} {
+      font-weight: #{$item} !important;
+    }
+  }
+}
+
+// Limit line for text: description, ...
+%max-line {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: $line-height-base;
+}
+
+.limit-line {
+  @each $item in 1 2 3 4 5 6 7 8 9 10 {
+    &-#{$item} {
+      @extend %max-line;
+      -webkit-line-clamp: #{$item};
+      max-height: #{$item * $line-height-base}em;
+    }
+  }
+}

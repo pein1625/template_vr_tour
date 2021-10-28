@@ -1,0 +1,55 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  &:focus {
+    outline: 0;
+  }
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  a {
+    display: inline;
+    background: 0;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+
+    &,
+    &:hover {
+      color: inherit;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}

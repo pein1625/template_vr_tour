@@ -1,0 +1,105 @@
+// COMMON USES VARIABLES
+
+// main colors
+
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 576px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px,
+//   xxl: 1400px
+// );
+
+// $container-max-widths: (
+//   sm: 540px,
+//   md: 720px,
+//   lg: 960px,
+//   xl: 1140px,
+//   xxl: 1320px
+// );
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  10: 10px,
+  12: 12px,
+  14: 14px,
+  18: 18px,
+  20: 20px,
+  24: 24px,
+  30: 30px,
+  40: 40px,
+  50: 50px,
+  60: 60px,
+  80: 80px,
+  100: 100px,
+);
+
+$grid-gutter-width: 30px;
+$gutters: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  20: 20px,
+  24: 24px,
+  30: 30px,
+  40: 40px,
+  50: 50px,
+  60: 60px,
+  80: 80px,
+);
+
+// Image ratio
+$aspect-ratios: (
+  "3x4": calc(4 / 3 * 100%),
+  "2x3": calc(3 / 2 * 100%),
+  "1x2": calc(2 / 1 * 100%),
+  "1x1": 100%,
+  "2x1": calc(1 / 2 * 100%),
+  "3x2": calc(2 / 3 * 100%),
+  "4x3": calc(3 / 4 * 100%),
+  "10x6": calc(6 / 10 * 100%),
+  "16x9": calc(9 / 16 * 100%),
+  "21x9": calc(9 / 21 * 100%),
+);
+
+// Social, brand colors
+$facebook: #37538d;
+$twitter: #47a5ed;
+$google-plus: #dd4b39;
+$linkedin: #086ca5;
+$pinterest: #bf1f24;
+$youtube: #e73a35;
+$skype: #00aff0;
+$messenger: #1e88e5;
+$zalo: #0080c8;
+$vimeo: #1ab7ea;
+$instagram: #5851db;
+
+// Form
+$input-group-addon-bg: #fff;
+
+// others
+$gradient: linear-gradient(
+  to right,
+  #ff0000,
+  #ffff00,
+  #00ff00,
+  #0000ff,
+  #fb0094,
+  #ff0000
+);
+
+$font-size-base: 0.875rem;
+$font-family-sans-serif: SVN-Gotham, Arial, system-ui, -apple-system, "Segoe UI",
+  Roboto, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";

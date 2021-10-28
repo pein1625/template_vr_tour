@@ -1,0 +1,62 @@
+.n-video {
+  &__frame {
+    @include frame("rect", 56.25%);
+
+    &::before {
+      transition: 0.3s;
+    }
+
+    &::after {
+      content: "";
+      width: 50px;
+      height: 50px;
+      background: url("../images/icon-play-circle.png") center/contain no-repeat;
+      position: absolute;
+      z-index: 10;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.3s;
+      opacity: 0;
+    }
+
+    &:hover::before {
+      background-color: rgba(#000, 0.5);
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &__title {
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.4;
+    margin: 10px 0 0;
+
+    a {
+      color: inherit;
+
+      &:hover {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+
+  @media (max-width: 991px) {
+    &__title {
+      font-size: 12px;
+      margin-top: 8px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    &__title {
+      font-size: 10px;
+      margin-top: 6px;
+    }
+  }
+}
