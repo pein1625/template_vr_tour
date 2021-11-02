@@ -1,3 +1,104 @@
+// Check is on screen
+(function ($) {
+  const $window = $(window);
+
+  $.fn.isOnScreen = function (percent = 1) {
+    const $el = $(this);
+    let scrollTop = $window.scrollTop();
+    let screenHeight = $window.outerHeight();
+    let offsetTop = $el.offset().top;
+    let height = $el.outerHeight();
+
+    return scrollTop > offsetTop - screenHeight + percent * height && scrollTop < offsetTop + (1 - percent) * height;
+  };
+})(jQuery);
+
+// count To
+// js-count-to(data-count-to="1000")
+(function ($) {
+  $.fn.countTo = function (options) {
+    // merge the default plugin settings with the custom options
+    options = $.extend({}, $.fn.countTo.defaults, options || {});
+
+    // how many times to update the value, and how much to increment the value on each update
+    var loops = Math.ceil(options.speed / options.refreshInterval),
+        increment = (options.to - options.from) / loops;
+
+    return $(this).each(function () {
+      var _this = this,
+          loopCount = 0,
+          value = options.from,
+          interval = setInterval(updateTimer, options.refreshInterval);
+
+      function updateTimer() {
+        value += increment;
+        loopCount++;
+        // $(_this).html(value.toFixed(options.decimals));
+        $(_this).html(Math.floor(value).toLocaleString("en"));
+
+        if (typeof options.onUpdate == "function") {
+          options.onUpdate.call(_this, value);
+        }
+
+        if (loopCount >= loops) {
+          clearInterval(interval);
+          value = options.to;
+
+          $(_this).html(Math.floor(value).toLocaleString("en"));
+
+          if (typeof options.onComplete == "function") {
+            options.onComplete.call(_this, value);
+          }
+        }
+      }
+    });
+  };
+
+  $.fn.countTo.defaults = {
+    from: 0, // the number the element should start at
+    to: 100, // the number the element should end at
+    speed: 1000, // how long it should take to count between the target numbers
+    refreshInterval: 100, // how often the element should be updated
+    decimals: 0, // the number of decimal places to show
+    onUpdate: null, // callback method for every time the element is updated,
+    onComplete: null // callback method for when the element finishes updating
+  };
+})(jQuery);
+
+jQuery(function ($) {
+  // requirement
+  if (!$.fn.isOnScreen) {
+    console.warn("Jquery.isOnScreen function is required!");
+    return;
+  }
+
+  const $window = $(window);
+  const $count = $(".js-count-to");
+
+  count();
+
+  $(window).on("scroll", count);
+
+  function count() {
+    let vh = $window.outerHeight();
+    let scrollTop = $window.scrollTop();
+
+    $count.not(".actived").each(function () {
+      let $el = $(this);
+      let count = $(this).data("countTo");
+
+      if ($el.isOnScreen(1)) {
+        $el.addClass("actived").countTo({
+          from: 0,
+          to: count,
+          speed: 2000,
+          refreshInterval: 5
+        });
+      }
+    });
+  }
+});
+
 /**
  * Chỉnh kích thước khung video vừa với màn hình
  */
@@ -35,10 +136,11 @@ function resizeVideoContainer() {
 $(function () {
   const $circle = $(".m-game__bg");
   const $light = $(".m-game__light");
-  const $gift = $(".js-game-gift");
+
+  var turn = 0; // Số lượt quay
   var token = true;
   var totalGift = 16;
-  var oneGiftDeg = 360 / 16;
+  var oneGiftDeg = 360 / totalGift;
 
   $(".js-game-start").on("click", function () {
     /**
@@ -47,32 +149,28 @@ $(function () {
     if (!token) return;
     token = false;
 
+    // Chặn chỉ cho quay 1 lượt
+    if (turn >= 1) {
+      // Thông báo hết lượt quay
+      console.log("Bạn đã hết lượt chơi!");
+      return;
+    }
+    turn++;
+
     $light.hide();
 
-    /**
-     * Random quay thêm >3 vòng
-     * Bằng: Số random 0-360* + số vòng quay cũ + 3 * 360
-     * Quay vòng tròn với số vòng tương ứng
-     */
-    var rand = Math.random();
+    var giftIndex = randomGift();
     var oldDeg = $circle.data("rotate") ? $circle.data("rotate") : 0;
-
-    var deg = Math.floor(rand * 360) + 3 * 360 + oldDeg;
+    var deg = giftIndex * oneGiftDeg + 3 * 360 + oldDeg + oldDeg % 360;
 
     $circle.data("rotate", deg);
     $circle.css("transform", `rotate(${deg}deg)`);
 
     /**
-     * Tính góc lệch của vòng quay để chiếu sáng ô phần thưởng
-     */
-    deg2 = (deg - oneGiftDeg / 2) % oneGiftDeg - 90 - oneGiftDeg;
-    $light.css("transform", `rotateZ(${deg2}deg) skewX(68deg)`);
-
-    /**
      * Sau thời gian quay
-     * Cần tạo 1 hàm tên showGameResult(deg) để
+     * Cần tạo 1 hàm tên showGameResult(giftIndex) để
      * tính toán đưa ra phần thưởng tương ứng
-     * Truyền vào tham số 'deg' là số góc quay của vòng tròn
+     * Truyền vào tham số 'giftIndex' là số thứ tự phần thưởng (tính từ 0 - 15)
      *
      * Nếu chưa tạo hàm này sẽ chạy code show sản phẩm demo
      */
@@ -82,12 +180,34 @@ $(function () {
         showGameResult(giftIndex);
       } else {
         // Hiển thị phần thưởng demo
-        $gift.addClass("show");
+        $(".js-game-aside").addClass("show");
+        $(".js-game-gift").eq(giftIndex).addClass("show");
         $light.fadeIn();
+        console.log(giftIndex);
       }
     }, 7000);
   });
 });
+
+/**
+ * Lấy random 1 sản phẩm dựa theo tỉ lệ cho sẵn;
+ * @returns index sản phẩm đếm từ 0->15
+ */
+function randomGift() {
+  var ratios = Array.from(document.querySelectorAll(".js-game-gift"), item => {
+    return parseFloat($(item).data("scale") || 0);
+  });
+  var length = ratios.length;
+  var rand = Math.random() * 100;
+  var total = 0;
+  var giftIndex = 0;
+
+  do {
+    total += ratios[giftIndex++];
+  } while (giftIndex < length && (ratios[giftIndex - 1] == 0 || total <= rand));
+
+  return giftIndex - 1;
+}
 
 /**
  * Preview image input when uploaded
@@ -164,3 +284,36 @@ function download(images) {
     document.body.removeChild(link);
   });
 }
+
+/**
+ * Calc and run progress bar
+ * Change progress number
+ */
+$(function () {
+  const $progress = $(".n-progress");
+
+  if (!$progress.length) return;
+
+  const duration = $progress.data("duration") || 2000;
+  const $number = $(".n-progress__number");
+  const $text = $(".n-progress__text");
+  const bar = document.querySelector(".n-progress__bar-inner");
+
+  $number.find("span").countTo({
+    from: 0,
+    to: 100,
+    speed: duration,
+    refreshInterval: 5,
+    onUpdate: val => {
+      val = Math.ceil(val);
+      console.log(val);
+      console.log(bar);
+      bar.style.width = val + "%";
+    },
+    onComplete: () => {
+      setTimeout(() => {
+        $text.addClass("show");
+      }, 1000);
+    }
+  });
+});
