@@ -253,26 +253,49 @@ $(function () {
  *
  */
 $(function () {
-  $(".js-download-image").on("click", async function () {
-    image = await domtoimage.toJpeg(document.querySelector(".uploads__image-outer"));
+  const $previewInput = $(".js-input-preview");
 
-    download([image]);
+  if (!$previewInput.length) return;
+
+  const $hiddenInput = $(".js-image-value");
+  const $bar1 = $(".uploads__bar-1");
+  const $bar2 = $(".uploads__bar-2");
+  const $intro = $(".uploads__intro");
+
+  $previewInput.on("change", function () {
+    const el = document.querySelector(".uploads__image-outer");
+    const scale = 3;
+
+    setTimeout(() => {
+      domtoimage.toJpeg(el, {
+        width: el.clientWidth * scale,
+        height: el.clientHeight * scale,
+        style: {
+          transform: "scale(" + scale + ")",
+          "transform-origin": "top left"
+        }
+      }).then(dataUrl => {
+        $bar1.hide();
+        $bar2.show();
+        $intro.show();
+        $hiddenInput.val(dataUrl);
+      });
+    }, 300);
+  });
+
+  $(".js-download-image").on("click", function (e) {
+    e.preventDefault();
+
+    var imgData = $hiddenInput.val();
+
+    if (imgData) {
+      download([imgData]);
+      return;
+    }
+
+    console.log("No image data!");
   });
 });
-
-function convert2Image(cb) {
-  if (!design) {
-    return;
-  }
-
-  (async function () {
-    let images = await Promise.all(design.boards.map(function (board) {
-      return domtoimage.toJpeg(board.bodyEl);
-    }));
-
-    cb(images);
-  })();
-}
 
 function download(images) {
   images.map(function (image) {
