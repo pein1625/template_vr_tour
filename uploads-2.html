@@ -10,46 +10,45 @@
     </head>
     <body>
         <!-- main content-->
-        <section class="uploads page"><img class="uploads__texture-1" src="./images/texture-1.png" alt=""><img class="uploads__texture-2" src="./images/texture-2.png" alt=""><img class="uploads__texture-3" src="./images/texture-3.png" alt=""><img class="uploads__texture-4" src="./images/texture-4.png" alt=""><img class="uploads__texture-5" src="./images/texture-5.png" alt="">
+        <div class="page">
             <div class="page__content">
-                <div class="uploads__wrapper">
-                    <div class="uploads__title">LƯU LẠI KHOẢNH KHẮC ĐÁNG NHỚ CÙNG<br>BIỂU TƯỢNG <strong style="color: #C06400">JOHNNIE WALKER</strong></div>
-                    <div class="row g-30 justify-content-center">
-                        <div class="col-auto">
-                            <div class="uploads__image-outer">
-                                <div class="uploads__frame"><img src="./images/upload-underlay-image.png" alt="">
-                                    <div id="preview-img"></div><img src="./images/upload-overlay-image.png" alt="">
-                                    <input class="js-input-preview" id="preview-input" type="file" data-target="#preview-img">
-                                    <input class="js-image-value" type="hidden">
+                <section class="uploads page__body">
+                    <div class="uploads__logo"><img src="./images/logo.png" alt=""></div>
+                    <div class="uploads__title page__title">LƯU LẠI KHOẢNH KHẮC ĐÁNG NHỚ TẠI GIFTING BOUTIQUE</div>
+                    <div class="uploads__container">
+                        <div class="row g-30 justify-content-center">
+                            <div class="col-auto">
+                                <div class="uploads__image-outer">
+                                    <div class="uploads__frame">
+                                        <div id="preview-img"></div><img src="./images/upload-overlay-image.png" alt="">
+                                        <input class="js-input-preview" id="preview-input" type="file" data-target="#preview-img">
+                                        <input class="js-image-value" type="hidden">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="uploads__bar-1 mt-20">
-                                <label class="uploads__btn-2" for="preview-input"><img src="./images/icon-upload.png" alt="" height="22"><span class="mt-2">Tải ảnh lên</span></label>
-                            </div>
-                            <div class="uploads__bar-2">
-                                <div class="row g-0">
-                                    <div class="col-6"><a class="uploads__btn-3 js-download-image" href="#!">
-                                            <div class="uploads__btn-3-iwrap"><img src="./images/icon-download.png" alt="" height="22"></div><span class="mt-2">TẢI ẢNH VỀ</span>
-                                        </a></div>
-                                    <div class="col-6">
-                                        <label class="uploads__btn-3" for="preview-input">
-                                            <div class="uploads__btn-3-iwrap"><img src="./images/icon-upload-image.png" alt="" height="22"></div><span class="mt-2">TẠO ẢNH MỚI</span>
-                                        </label>
+                                <div class="uploads__bar">
+                                    <div class="row g-3 justify-content-center">
+                                        <div class="col-6 uploads__btn-wrap">
+                                            <label class="uploads__btn-2" for="preview-input"><img src="./images/icon-upload.png" alt="" height="22"><span class="mt-2">TẢI HÌNH LÊN</span></label>
+                                        </div>
+                                        <div class="col-6 uploads__btn-wrap-2"><a class="uploads__btn-2 js-download-image" href="#!"><img src="./images/icon-download.png" alt="" height="22"><span class="mt-2">TẢI ẢNH VỀ</span></a></div>
+                                        <div class="col-6 uploads__btn-wrap-2">
+                                            <label class="uploads__btn-2" for="preview-input"><img src="./images/icon-upload-image.png" alt="" height="22"><span class="mt-2">TẠO ẢNH MỚI</span></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col uploads__intro">
-                            <div class="uploads__desc">
-                                <p>Đừng quên chia sẻ hình vừa tạo lên Facebook cá nhân kèm theo 3 hashtag bên dưới để có cơ hội trở thành 1 trong 3 vị khách có lượt like tương tác cao nhất và nhận được phần quà giá trị Bộ sưu tập Tết John Walker & Sons XR21. Cuộc thi sẽ kết thúc vào lúc 21 giờ ngày 22/10/2021, kết quả sẽ được cập nhật sớm nhất trên Fanpage của Johnnie Walker</p>
-                                <p class="uploads__tags"><a href="#!">#DiageoVietNam</a><a href="#!">#XRfranchise</a><a href="#!">#KeepWalking</a></p>
-                                <p class="text-center"><img src="./images/upload-img-2.png" alt=""></p>
+                            <div class="col uploads__intro">
+                                <div class="uploads__desc">
+                                    <p>Đừng quên chia sẻ hình vừa tạo lên Facebook cá nhân kèm hashtag <a href="#!">#GiftingBoutique</a> để có cơ hội trở thành 100 vị khách may mắn đầu tiên có lượt like cao nhất và nhận được phần quà hấp dẫn.</p>
+                                    <p>Kết quả sẽ được cập nhật sớm nhất trên fanpage của Diageo Việt Nam vào lúc 20:00 ngày 30/11/2021</p>
+                                </div>
+                                <div class="text-center"><img class="uploads__img" src="./images/giftbox.png" alt=""></div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
-        </section>
+        </div>
         <!-- JS-->
         <script src="./js/libs.js"></script>
         <script src="./vendor/dom2image/dom2image.min.js"></script>

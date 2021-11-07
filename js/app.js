@@ -100,37 +100,6 @@ jQuery(function ($) {
 });
 
 /**
- * Chỉnh kích thước khung video vừa với màn hình
- */
-$(function () {
-  resizeVideoContainer();
-});
-
-function resizeVideoContainer() {
-  const $videoContainer = $(".video-container");
-  const $content = $(".page__content");
-
-  if (!$content.length) return;
-
-  calcVideoWidth();
-
-  $(window).on("resize", calcVideoWidth);
-
-  function calcVideoWidth() {
-    const paddingLeft = parseInt($content.css("padding-left") || 0);
-    const paddingRight = parseInt($content.css("padding-right") || 0);
-    let width = $content.innerWidth() - paddingLeft - paddingRight;
-    let height = $content.innerHeight();
-
-    if (height > width * 16 / 9) return;
-
-    width = height / 9 * 16;
-
-    $videoContainer.css("maxWidth", width);
-  }
-}
-
-/**
  * Thiết lập trò chơi vòng quay may mắn
  */
 $(function () {
@@ -139,7 +108,7 @@ $(function () {
 
   var turn = 0; // Số lượt quay
   var token = true;
-  var totalGift = 16;
+  var totalGift = 12;
   var oneGiftDeg = 360 / totalGift;
 
   $(".js-game-start").on("click", function () {
@@ -180,9 +149,9 @@ $(function () {
         showGameResult(giftIndex);
       } else {
         // Hiển thị phần thưởng demo
-        $(".js-game-aside").addClass("show");
-        $(".js-game-gift").eq(giftIndex).addClass("show");
         $light.fadeIn();
+        $(".lucky-rotation__info").hide();
+        $(".js-game-gift").eq(giftIndex).addClass("show");
         console.log(giftIndex);
       }
     }, 7000);
@@ -258,9 +227,7 @@ $(function () {
   if (!$previewInput.length) return;
 
   const $hiddenInput = $(".js-image-value");
-  const $bar1 = $(".uploads__bar-1");
-  const $bar2 = $(".uploads__bar-2");
-  const $intro = $(".uploads__intro");
+  const $section = $(".uploads");
 
   $previewInput.on("change", function () {
     const el = document.querySelector(".uploads__image-outer");
@@ -275,9 +242,7 @@ $(function () {
           "transform-origin": "top left"
         }
       }).then(dataUrl => {
-        $bar1.hide();
-        $bar2.show();
-        $intro.show();
+        $section.addClass("active");
         $hiddenInput.val(dataUrl);
       });
     }, 300);
@@ -319,8 +284,7 @@ $(function () {
 
   const duration = $progress.data("duration") || 2000;
   const $number = $(".n-progress__number");
-  const $text = $(".n-progress__text");
-  const bar = document.querySelector(".n-progress__bar-inner");
+  const $rotateImgs = $(".n-progress__img-2, .n-progress__img-3, .n-progress__light");
 
   $number.find("span").countTo({
     from: 0,
@@ -328,15 +292,18 @@ $(function () {
     speed: duration,
     refreshInterval: 5,
     onUpdate: val => {
+      let deg = val * 360 / 100;
+
       val = Math.ceil(val);
-      console.log(val);
-      console.log(bar);
-      bar.style.width = val + "%";
+
+      $rotateImgs.css("transform", `rotate(${deg}deg)`);
+
+      if (val >= 50) {
+        $progress.addClass("over-half");
+      }
     },
     onComplete: () => {
-      setTimeout(() => {
-        $text.addClass("show");
-      }, 1000);
+      $progress.addClass("is-completed");
     }
   });
 });

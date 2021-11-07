@@ -12,9 +12,14 @@
         <!-- main content-->
         <div class="page">
             <div class="page__content">
-                <div class="page__title page__title--1">NHÌN LẠI HÀNH TRÌNH THÚ VỊ TẠI GIFTING BOUTIQUE CÙNG NHỮNG NGƯỜI BẠN DIAGEO</div>
-                <div class="page__grid js-video-grid"></div>
+                <div class="page__body">
+                    <div class="page__title page__title--1">NHÌN LẠI HÀNH TRÌNH THÚ VỊ TẠI GIFTING BOUTIQUE CÙNG NHỮNG NGƯỜI BẠN DIAGEO</div>
+                    <div class="page__grid js-video-grid"></div>
+                </div>
             </div>
+        </div>
+        <div class="video-container">
+            <button class="video-container__close" type="button"></button>
         </div>
         <!-- JS-->
         <script src="./js/libs.js"></script>
@@ -27,11 +32,14 @@
         <pre id="content" style="white-space: pre-wrap;"></pre>
         <script type="text/javascript">
             // Client ID and API key from the Developer Console
-            var CLIENT_ID = "197104364691-23udkftg8pmsartkv83epjc1a7an8l6n.apps.googleusercontent.com";
+            var CLIENT_ID =
+                "197104364691-23udkftg8pmsartkv83epjc1a7an8l6n.apps.googleusercontent.com";
             var API_KEY = "AIzaSyDF5UWLCzADbghUJA1vwUSQzbV28ghrpB4";
             var GOOGLE_SHEET_ID = "1sUyz6jLVaWlY-DrgfIxMdD5uxv-DjHWYEkcz-Qud-fY";
             // Array of API discovery doc URLs for APIs used by the quickstart
-            var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
+            var DISCOVERY_DOCS = [
+                "https://sheets.googleapis.com/$discovery/rest?version=v4",
+            ];
             // Authorization scopes required by the API; multiple scopes can be
             // included, separated by spaces.
             var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
@@ -155,6 +163,8 @@
             function createVideoGrid(videos)
             {
                 var $videoGrid = $(".js-video-grid");
+                var $videoContainer = $(".video-container");
+                var $videoClose = $(".video-container__close");
                 var html = "";
                 html = videos
                     .map((video) =>
@@ -180,14 +190,16 @@
                     e.preventDefault();
                     var youtubeId = $(this).data("id");
                     if (!youtubeId) return;
-                    $videoGrid.parent(".page__content").html(`
-    <div class="video-container mx-auto" style="max-width: 771.556px;">
-        <div class="ratio ratio-16x9">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/${youtubeId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-        </div>
-    </div>
-    `);
-                    resizeVideoContainer();
+                    $videoContainer
+                        .addClass("is-show")
+                        .append(
+                            `<iframe width="560" height="315" src="https://www.youtube.com/embed/${youtubeId}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>`
+                        );
+                });
+                $videoClose.on("click", function(e)
+                {
+                    e.preventDefault();
+                    $videoContainer.removeClass("is-show").find("iframe").remove();
                 });
             }
             /**
@@ -198,7 +210,9 @@
             function YouTubeGetID(url)
             {
                 var ID = "";
-                url = url.replace(/(>|<)/gi, "").split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+                url = url
+                    .replace(/(>|<)/gi, "")
+                    .split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
                 if (url[2] !== undefined)
                 {
                     ID = url[2].split(/[^0-9a-z_\-]/i);

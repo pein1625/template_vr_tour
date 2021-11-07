@@ -12,134 +12,114 @@
         <!-- main content-->
         <div class="page">
             <div class="page__content">
-                <div class="lucky-rotation">
-                    <div class="page__title page__title--2">CHÚC MỪNG BẠN ĐÃ HOÀN THÀNH HÀNH TRÌNH TRẢI NGHIỆM. HÃY NHẤN NGAY ĐỂ BẮT ĐẦU VÒNG QUAY</div>
+                <section class="lucky-rotation page__body">
                     <div class="lucky-rotation__body">
-                        <div class="lucky-rotation__aside js-game-aside">
-                            <div class="lucky-rotation__text mb-2 mb-md-3 mb-lg-4">CHÚC MỪNG BẠN ĐÃ NHẬN ĐƯỢC PHẦN QUÀ MAY MẮN</div><a class="lucky-rotation__btn" href="./form.html">Nhận quà ngay</a>
-                        </div>
-                        <div class="lucky-rotation__center">
+                        <div class="lucky-rotation__col">
                             <div class="m-game">
-                                <div class="m-game__start js-game-start"><img src="./images/game-start-btn.png" alt=""></div>
-                                <div class="m-game__wrapper"><img class="m-game__bg" src="./images/game-circle.png" alt=""><img class="m-game__border" src="./images/game-circle-border.png" alt="">
-                                    <div class="m-game__light"></div>
+                                <div class="m-game__container">
+                                    <div class="m-game__circle"><img class="m-game__bg" src="./images/game-circle.png" alt="">
+                                        <div class="m-game__light"></div><img class="m-game__bg" src="./images/game-circle-inner.png" alt=""><img class="m-game__border" src="./images/game-circle-border.png" alt="">
+                                    </div><img class="m-game__caret" src="./images/game-carret.png" alt="">
                                 </div>
                             </div>
                         </div>
-                        <!-- Phần thưởng 1-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="0">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">01 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
+                        <div class="lucky-rotation__col">
+                            <!-- Bắt đầu-->
+                            <div class="lucky-rotation__info">
+                                <div class="lucky-rotation__text-1">Chúc mừng</div>
+                                <div class="lucky-rotation__text-2">BẠN ĐÃ NHẬN ĐƯỢC<br>01 LƯỢT QUAY MAY MẮN</div>
+                                <div class="lucky-rotation__text-3">Hãy nhấn vào nút <span style="color: #a37229">BẮT ĐẦU</span> để bắt đầu lượt quay</div>
+                                <div class="text-center">
+                                    <button class="lucky-rotation__btn js-game-start" type="button">Bắt đầu</button>
+                                </div>
                             </div>
-                        </div>
-                        <!-- Phần thưởng 2-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="9">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">02 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
+                            <!-- Phần thưởng 1-->
+                            <div class="lucky-rotation__gift js-game-gift" data-scale="2">
+                                <div class="lucky-rotation__text-1">BẠN ĐÃ NHẬN</div>
+                                <div class="lucky-rotation__gift-img"><img src="./images/gift-1.png" alt=""></div>
+                                <div class="lucky-rotation__text-2"><small>01 THƯ MỜI ĐẾN</small> SỰ KIỆN<br>ĐẶC BIỆT <small>GIỚI TINH HOA</small></div>
+                                <div class="text-center"><a class="lucky-rotation__btn" href="./form.html">Nhận quà</a></div>
                             </div>
-                        </div>
-                        <!-- Phần thưởng 3-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="0">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">03 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
+                            <!-- Phần thưởng 2-->
+                            <div class="lucky-rotation__gift js-game-gift" data-scale="5">
+                                <div class="lucky-rotation__text-1">BẠN ĐÃ NHẬN</div>
+                                <div class="lucky-rotation__gift-img"><img src="./images/gift-2.png" alt=""></div>
+                                <div class="lucky-rotation__text-2"><small>2 VOUCHER MUA SẮM</small><br>500,000 VND</div>
+                                <div class="text-center"><a class="lucky-rotation__btn" href="./form.html">Nhận quà</a></div>
                             </div>
-                        </div>
-                        <!-- Phần thưởng 4-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="1">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">04 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
+                            <!-- Phần thưởng 3-->
+                            <div class="lucky-rotation__gift js-game-gift" data-scale="0">
+                                <div class="lucky-rotation__text-1">BẠN ĐÃ NHẬN</div>
+                                <div class="lucky-rotation__gift-img"><img src="./images/gift-3.png" alt=""></div>
+                                <div class="lucky-rotation__text-2"><small>3 BỘ QUÀ TẶNG</small><br>GIFTING BOUTIQUE</div>
+                                <div class="text-center"><a class="lucky-rotation__btn" href="./form.html">Nhận quà</a></div>
                             </div>
-                        </div>
-                        <!-- Phần thưởng 5-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="0">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">05 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
+                            <!-- Phần thưởng 4-->
+                            <div class="lucky-rotation__gift js-game-gift" data-scale="13">
+                                <div class="lucky-rotation__text-1">BẠN ĐÃ NHẬN</div>
+                                <div class="lucky-rotation__gift-img"><img src="./images/gift-1.png" alt=""></div>
+                                <div class="lucky-rotation__text-2"><small>4 THƯ MỜI ĐẾN</small> SỰ KIỆN<br>ĐẶC BIỆT <small>GIỚI TINH HOA</small></div>
+                                <div class="text-center"><a class="lucky-rotation__btn" href="./form.html">Nhận quà</a></div>
                             </div>
-                        </div>
-                        <!-- Phần thưởng 6-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="2">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">06 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
+                            <!-- Phần thưởng 5-->
+                            <div class="lucky-rotation__gift js-game-gift" data-scale="0">
+                                <div class="lucky-rotation__text-1">BẠN ĐÃ NHẬN</div>
+                                <div class="lucky-rotation__gift-img"><img src="./images/gift-2.png" alt=""></div>
+                                <div class="lucky-rotation__text-2"><small>5 VOUCHER MUA SẮM</small><br>500,000 VND</div>
+                                <div class="text-center"><a class="lucky-rotation__btn" href="./form.html">Nhận quà</a></div>
                             </div>
-                        </div>
-                        <!-- Phần thưởng 7-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="8">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">07 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
+                            <!-- Phần thưởng 6-->
+                            <div class="lucky-rotation__gift js-game-gift" data-scale="12">
+                                <div class="lucky-rotation__text-1">BẠN ĐÃ NHẬN</div>
+                                <div class="lucky-rotation__gift-img"><img src="./images/gift-3.png" alt=""></div>
+                                <div class="lucky-rotation__text-2"><small>6 BỘ QUÀ TẶNG</small><br>GIFTING BOUTIQUE</div>
+                                <div class="text-center"><a class="lucky-rotation__btn" href="./form.html">Nhận quà</a></div>
                             </div>
-                        </div>
-                        <!-- Phần thưởng 8-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="5">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">08 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
+                            <!-- Phần thưởng 7-->
+                            <div class="lucky-rotation__gift js-game-gift" data-scale="18">
+                                <div class="lucky-rotation__text-1">BẠN ĐÃ NHẬN</div>
+                                <div class="lucky-rotation__gift-img"><img src="./images/gift-1.png" alt=""></div>
+                                <div class="lucky-rotation__text-2"><small>7 THƯ MỜI ĐẾN</small> SỰ KIỆN<br>ĐẶC BIỆT <small>GIỚI TINH HOA</small></div>
+                                <div class="text-center"><a class="lucky-rotation__btn" href="./form.html">Nhận quà</a></div>
                             </div>
-                        </div>
-                        <!-- Phần thưởng 9-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="5">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">09 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
+                            <!-- Phần thưởng 8-->
+                            <div class="lucky-rotation__gift js-game-gift" data-scale="5">
+                                <div class="lucky-rotation__text-1">BẠN ĐÃ NHẬN</div>
+                                <div class="lucky-rotation__gift-img"><img src="./images/gift-2.png" alt=""></div>
+                                <div class="lucky-rotation__text-2"><small>8 VOUCHER MUA SẮM</small><br>500,000 VND</div>
+                                <div class="text-center"><a class="lucky-rotation__btn" href="./form.html">Nhận quà</a></div>
                             </div>
-                        </div>
-                        <!-- Phần thưởng 10-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="4">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">10 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
+                            <!-- Phần thưởng 9-->
+                            <div class="lucky-rotation__gift js-game-gift" data-scale="10">
+                                <div class="lucky-rotation__text-1">BẠN ĐÃ NHẬN</div>
+                                <div class="lucky-rotation__gift-img"><img src="./images/gift-3.png" alt=""></div>
+                                <div class="lucky-rotation__text-2"><small>9 BỘ QUÀ TẶNG</small><br>GIFTING BOUTIQUE</div>
+                                <div class="text-center"><a class="lucky-rotation__btn" href="./form.html">Nhận quà</a></div>
                             </div>
-                        </div>
-                        <!-- Phần thưởng 11-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="6">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">11 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
+                            <!-- Phần thưởng 10-->
+                            <div class="lucky-rotation__gift js-game-gift" data-scale="15">
+                                <div class="lucky-rotation__text-1">BẠN ĐÃ NHẬN</div>
+                                <div class="lucky-rotation__gift-img"><img src="./images/gift-1.png" alt=""></div>
+                                <div class="lucky-rotation__text-2"><small>10 THƯ MỜI ĐẾN</small> SỰ KIỆN<br>ĐẶC BIỆT <small>GIỚI TINH HOA</small></div>
+                                <div class="text-center"><a class="lucky-rotation__btn" href="./form.html">Nhận quà</a></div>
                             </div>
-                        </div>
-                        <!-- Phần thưởng 12-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="7">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">12 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
+                            <!-- Phần thưởng 11-->
+                            <div class="lucky-rotation__gift js-game-gift" data-scale="20">
+                                <div class="lucky-rotation__text-1">BẠN ĐÃ NHẬN</div>
+                                <div class="lucky-rotation__gift-img"><img src="./images/gift-2.png" alt=""></div>
+                                <div class="lucky-rotation__text-2"><small>11 VOUCHER MUA SẮM</small><br>500,000 VND</div>
+                                <div class="text-center"><a class="lucky-rotation__btn" href="./form.html">Nhận quà</a></div>
                             </div>
-                        </div>
-                        <!-- Phần thưởng 13-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="8">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">13 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
-                            </div>
-                        </div>
-                        <!-- Phần thưởng 14-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="15">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">14 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
-                            </div>
-                        </div>
-                        <!-- Phần thưởng 15-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="10">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">15 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
-                            </div>
-                        </div>
-                        <!-- Phần thưởng 16-->
-                        <div class="lucky-rotation__aside js-game-gift" data-scale="20">
-                            <div class="row g-2 g-md-3 g-lg-4 align-items-center">
-                                <div class="col-4 col-sm-12 text-center"><img src="./images/gift-3.png" alt=""></div>
-                                <div class="col-8 col-sm-12 lucky-rotation__text">16 THƯ MỜI ĐẾN VỚI SỰ KIỆN ĐẶC BIỆT GIỚI TINH HOA</div>
+                            <!-- Phần thưởng 12-->
+                            <div class="lucky-rotation__gift js-game-gift" data-scale="0">
+                                <div class="lucky-rotation__text-1">BẠN ĐÃ NHẬN</div>
+                                <div class="lucky-rotation__gift-img"><img src="./images/gift-3.png" alt=""></div>
+                                <div class="lucky-rotation__text-2"><small>12 BỘ QUÀ TẶNG</small><br>GIFTING BOUTIQUE</div>
+                                <div class="text-center"><a class="lucky-rotation__btn" href="./form.html">Nhận quà</a></div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
         <!-- JS-->
