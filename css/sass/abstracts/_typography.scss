@@ -4,3 +4,11 @@
 @include font-face("SVN-Gotham", "SVN-GothamBoldItalic", 700, italic);
 @include font-face("SVN-Gotham", "SVN-GothamLight", 300);
 @include font-face("SVN-Gotham", "SVN-GothamLightItalic", 300, italic);
+@include font-face("SVN-Gotham", "SVN-GothamBook", 350);
+@include font-face("SVN-Gotham", "SVN-GothamBookItalic", 350, italic);
+@include font-face("SFUTimesTen", "SFUTimesTenRoman");
+@include font-face("SFUTimesTen", "SFUTimesTenItalic", 400, italic);
+@include font-face("SFUTimesTen", "SFUTimesTenBold", 700);
+@include font-face("SFUTimesTen", "SFUTimesTenBoldItalic", 700, italic);
+
+$timesten: "SFUTimesTen", serif;

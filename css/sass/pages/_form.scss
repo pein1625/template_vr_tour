@@ -1,0 +1,418 @@
+.n-form {
+  font-size: 20px;
+
+  &__title {
+    font-size: 25px;
+  }
+
+  &__content {
+    width: 750px;
+    max-width: 100%;
+    margin: 34px auto 0;
+  }
+
+  &__group {
+    margin-bottom: 6px;
+  }
+
+  &__btn {
+    @include btn("shine");
+
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    color: $text-color;
+    background: linear-gradient(
+      to right bottom,
+      #efd89e 0%,
+      #d6ad64 75%,
+      #d6ad64 100%
+    );
+    padding: 0 28px;
+    line-height: 45px;
+    border-radius: 8px;
+    border: 0;
+
+    &:hover {
+      background-color: darken(#a37229, 5%);
+    }
+  }
+
+  .form-label {
+    font-size: 1em;
+    font-weight: 350;
+    color: $text-color;
+    padding-left: 16px;
+  }
+
+  .form-select,
+  .form-control {
+    border: 0;
+    border-radius: 8px;
+    background: rgba(#fff, 0.5);
+    color: $white;
+    font-size: 1em;
+    font-weight: 350;
+    line-height: 30px;
+    padding-left: 16px;
+    transition: 0.3s;
+
+    &:focus {
+      outline: 0;
+      box-shadow: unset;
+      background-color: rgba(#777, 0.36);
+    }
+  }
+
+  input.form-control,
+  select.form-select {
+    height: 45px;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 16px;
+
+    &__btn {
+      line-height: 35px;
+      border-radius: 4px;
+    }
+
+    .form-select,
+    .form-control {
+      border-radius: 4px;
+    }
+
+    input.form-control,
+    select.form-select {
+      height: 35px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    font-size: 14px;
+
+    &__title {
+      font-size: 18px;
+    }
+
+    &__content {
+      width: 450px;
+      margin-top: 16px;
+    }
+
+    &__group {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      grid-gap: 20px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .form-label {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 575px) {
+    font-size: 12px;
+
+    &__title {
+      font-size: 14px;
+    }
+
+    &__group {
+      grid-template-columns: 128px 1fr;
+      margin-bottom: 6px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    &__title {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    &__desc {
+      font-size: 9px;
+    }
+
+    &__content {
+      flex-grow: 0;
+    }
+
+    &__group {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    &__btn {
+      margin-top: 16px;
+    }
+
+    .form-label {
+      margin-bottom: 4px;
+    }
+  }
+}
+
+.n-progress {
+  &__title {
+    font-size: 24px;
+    width: 480px;
+    margin-bottom: 55px;
+  }
+
+  &__number {
+    font-family: $timesten;
+    color: #a37229;
+    font-size: 42px;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1;
+    margin-top: 25px;
+    text-align: center;
+  }
+
+  &__circle {
+    @include frame("circle");
+    width: 240px;
+    max-width: 100%;
+
+    img {
+      &:nth-child(1) {
+        z-index: 1;
+      }
+
+      &:nth-child(2) {
+        z-index: 9;
+      }
+
+      &:nth-child(3) {
+        z-index: -1;
+      }
+
+      &:nth-child(4) {
+        z-index: 10;
+      }
+
+      &:nth-child(5) {
+        z-index: 1;
+      }
+
+      &:nth-child(6) {
+        z-index: 100;
+      }
+    }
+  }
+
+  &__light {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 200;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    img {
+      width: auto;
+      height: 15%;
+      position: absolute;
+      top: 7.5%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__link {
+    display: none;
+  }
+
+  &__guide {
+    width: 950px;
+    max-width: 100%;
+    margin: 46px auto 0;
+    font-size: 18px;
+    font-weight: 400;
+    color: $text-color;
+    text-align: center;
+
+    &--complete {
+      display: none;
+    }
+  }
+
+  &__guide-label {
+    display: flex;
+    align-items: flex-start;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 0;
+
+    &::before,
+    &::after {
+      content: "";
+      flex: 1;
+      border-top: 2px solid #c79b3b;
+      border-left: 2px solid #c79b3b;
+      margin-right: 24px;
+      border-radius: 12px 0 0 0;
+      align-self: stretch;
+    }
+
+    &::after {
+      margin-right: 0;
+      margin-left: 24px;
+      border-left: 0;
+      border-right: 2px solid #c79b3b;
+      border-radius: 0 12px 0 0;
+    }
+
+    span {
+      display: inline-block;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__guide-content {
+    padding: 12px 60px 24px;
+    border: 2px solid #c79b3b;
+    border-top: 0;
+    border-radius: 0 0 12px 12px;
+  }
+
+  &.over-half &__circle {
+    img {
+      &:nth-child(3) {
+        z-index: 1;
+      }
+
+      &:nth-child(4) {
+        z-index: 2;
+      }
+
+      &:nth-child(5) {
+        z-index: -1;
+      }
+    }
+  }
+
+  &.is-completed &__link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    z-index: 1000;
+  }
+
+  &.is-completed &__guide--start {
+    display: none;
+    animation: fadeOut 0.3s linear;
+  }
+
+  &.is-completed &__guide--complete {
+    display: block;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  @media (max-width: 1199px) {
+    &__title {
+      width: 440px;
+      margin-bottom: 16px;
+    }
+
+    &__guide {
+      font-size: 16px;
+      width: 800px;
+    }
+
+    &__guide-content {
+      padding: 0 24px 16px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    &__title {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    &__circle {
+      width: 200px;
+    }
+
+    &__number {
+      font-size: 35px;
+      margin-top: 16px;
+    }
+
+    &__guide {
+      font-size: 14px;
+      margin-top: 30px;
+    }
+
+    &__guide-content {
+      padding: 0 20px 12px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    &__circle {
+      width: 160px;
+    }
+
+    &__number {
+      font-size: 30px;
+    }
+  }
+
+  @media (max-width: 575px) {
+    &__title {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    &__title {
+      margin-bottom: 30px;
+    }
+
+    &__number {
+      margin-top: 20px;
+    }
+
+    &__guide {
+      font-size: 12px;
+      margin-top: 40px;
+    }
+  }
+}
+
+@keyframes flash-text {
+  from,
+  30%,
+  60%,
+  to {
+    opacity: 1;
+  }
+
+  15%,
+  45% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
