@@ -1,0 +1,58 @@
+.popup {
+  // display: flex;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  padding: 15px;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  background-color: #333333;
+
+  &.show {
+    display: flex;
+  }
+
+  &__content {
+    font-size: 14px;
+    line-height: 1.8;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: $white;
+    text-align: center;
+    width: 435px;
+    max-width: 100%;
+    margin: 0 auto;
+
+    a {
+      color: #ce9a50;
+
+      &:hover {
+        color: #ce9a50;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__icon {
+    @include frame("square");
+    width: 100px;
+    margin: 0 auto 40px;
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  @media (max-width: 767px) {
+    &__content {
+      font-size: 11px;
+      width: 340px;
+    }
+  }
+}

@@ -307,3 +307,12 @@ $(function () {
     }
   });
 });
+
+// toggle share btns
+$(function () {
+  $(".share-btns__toggle").on("click", function (e) {
+    e.preventDefault();
+
+    $(this).siblings(".share-btns__dropdown").fadeToggle("fast");
+  });
+});

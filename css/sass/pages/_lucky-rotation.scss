@@ -249,8 +249,6 @@
     left: 50%;
     transform-origin: 0 0;
     transform: rotateZ(-105deg) skewX(60deg);
-    box-shadow: 0 2px 0 4px #c03015, inset 0 0 8px #000,
-      inset 0 0 15px rgba(#000, 1);
 
     &::before {
       content: "";
