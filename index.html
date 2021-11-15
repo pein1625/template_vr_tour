@@ -65,16 +65,22 @@
                     return;
                 }
                 checkRotation();
-                window.addEventListener("orientationchange resize", checkRotation);
-                window.onresize = checkRotation;
+                window.addEventListener("orientationchange", checkRotation, false);
+                window.addEventListener("resize", checkRotation, false);
             }
+            var previousOrientation = window.orientation;
 
             function checkRotation()
             {
+                if (window.orientation === previousOrientation)
+                {
+                    return;
+                }
+                previousOrientation = window.orientation;
                 var rotationAlert = document.getElementById('MOBILE_CHECKER');
                 var body = document.querySelector('body');
                 if (!rotationAlert) return;
-                if (screen.availHeight > screen.availWidth || window.innerHeight > window.innerWidth)
+                if (window.orientation % 180 === 0)
                 {
                     rotationAlert.classList.add('show');
                     body.classList.add('overflow-hidden');
