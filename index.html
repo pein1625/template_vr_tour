@@ -44,6 +44,10 @@
                             return "Mozilla Firefox";
                         case agent.indexOf("safari") > -1:
                             return "Safari";
+                        case agent.indexOf("fban") > -1:
+                            return "FBAN";
+                        case agent.indexOf("fbav") > -1:
+                            return "FBAV";
                         default:
                             return "other";
                     }
