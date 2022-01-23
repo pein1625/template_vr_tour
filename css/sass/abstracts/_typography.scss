@@ -6,9 +6,11 @@
 @include font-face("SVN-Gotham", "SVN-GothamLightItalic", 300, italic);
 @include font-face("SVN-Gotham", "SVN-GothamBook", 350);
 @include font-face("SVN-Gotham", "SVN-GothamBookItalic", 350, italic);
-@include font-face("SFUTimesTen", "SFUTimesTenRoman");
-@include font-face("SFUTimesTen", "SFUTimesTenItalic", 400, italic);
-@include font-face("SFUTimesTen", "SFUTimesTenBold", 700);
-@include font-face("SFUTimesTen", "SFUTimesTenBoldItalic", 700, italic);
 
-$timesten: "SFUTimesTen", serif;
+@include font-face("UTMTrajanProBold", "UTMTrajanProBold");
+@include font-face("UTMBebas", "UTMBebas");
+@include font-face("JohnnieWalkerSans-Book", "JohnnieWalkerSans-Book");
+
+$trajanBold: "UTMTrajanProBold", sans-serif;
+$bebas: "UTMBebas", sans-serif;
+$johnie: "JohnnieWalkerSans-Book", sans-serif;

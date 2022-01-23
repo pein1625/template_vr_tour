@@ -99,220 +99,104 @@ jQuery(function ($) {
   }
 });
 
-/**
- * Thiết lập trò chơi vòng quay may mắn
- */
+// Toggle Video
 $(function () {
-  const $circle = $(".m-game__bg");
-  const $light = $(".m-game__light");
+  $(".welcome-video__overlay").on("click", function () {
+    const $frame = $(this).parent().find("iframe");
+    $(this).detach().remove();
+    $frame.attr("src", $frame.data("src") + "?autoplay=1");
+  });
+});
 
-  var turn = 0; // Số lượt quay
-  var token = true;
-  var totalGift = 12;
-  var oneGiftDeg = 360 / totalGift;
+// countdown timer
 
-  $(".js-game-start").on("click", function () {
-    /**
-     *  Kiểm tra token (đang quay thì không được ấn thêm)
-     */
-    if (!token) return;
-    token = false;
+// .js-countdown(data-countdown="2021-1-24T12:45:04")
 
-    // Chặn chỉ cho quay 1 lượt
-    if (turn >= 1) {
-      // Thông báo hết lượt quay
-      console.log("Bạn đã hết lượt chơi!");
-      return;
-    }
-    turn++;
+$(function () {
+  $(".js-countdown").each(function () {
+    let countdown = $(this).data("countdown");
 
-    $light.hide();
+    if (!countdown) return;
 
-    var giftIndex = randomGift();
-    var oldDeg = $circle.data("rotate") ? $circle.data("rotate") : 0;
-    var deg = giftIndex * oneGiftDeg + 3 * 360 + oldDeg + oldDeg % 360;
+    let endTime = parseDate(countdown);
 
-    $circle.data("rotate", deg);
-    $circle.css("transform", `rotate(${deg}deg)`);
+    let interval;
 
-    /**
-     * Sau thời gian quay
-     * Cần tạo 1 hàm tên showGameResult(giftIndex) để
-     * tính toán đưa ra phần thưởng tương ứng
-     * Truyền vào tham số 'giftIndex' là số thứ tự phần thưởng (tính từ 0 - 15)
-     *
-     * Nếu chưa tạo hàm này sẽ chạy code show sản phẩm demo
-     */
-    setTimeout(() => {
-      token = true;
-      if (window.showGameResult && typeof window.showGameResult == "function") {
-        showGameResult(giftIndex);
-      } else {
-        // Hiển thị phần thưởng demo
-        $light.fadeIn();
-        $(".lucky-rotation__info").hide();
-        $(".js-game-gift").eq(giftIndex).addClass("show");
-        console.log(giftIndex);
+    const buildClock = () => {
+      let thisTime = new Date().getTime();
+
+      let duration = endTime - thisTime;
+
+      if (duration < 0 && interval) {
+        clearInterval(interval);
+
+        return;
       }
-    }, 7000);
-  });
-});
 
-/**
- * Lấy random 1 sản phẩm dựa theo tỉ lệ cho sẵn;
- * @returns index sản phẩm đếm từ 0->15
- */
-function randomGift() {
-  var ratios = Array.from(document.querySelectorAll(".js-game-gift"), item => {
-    return parseFloat($(item).data("scale") || 0);
-  });
-  var length = ratios.length;
-  var rand = Math.random() * 100;
-  var total = 0;
-  var giftIndex = 0;
+      let seconds = Math.floor(duration / 1000 % 60);
 
-  do {
-    total += ratios[giftIndex++];
-  } while (giftIndex < length && (ratios[giftIndex - 1] == 0 || total <= rand));
+      let minutes = Math.floor(duration / (1000 * 60) % 60);
 
-  return giftIndex - 1;
-}
+      let hours = Math.floor(duration / (1000 * 60 * 60) % 24);
 
-/**
- * Preview image input when uploaded
- */
-$(function () {
-  $(".js-input-preview").on("change", function () {
-    let input = this;
-    let parent = $(input).data("parent");
-    let target = $(input).data("target");
-    let multiple = $(input).prop("multiple");
-    let $target;
+      let days = Math.floor(duration / (1000 * 60 * 60 * 24));
 
-    if (!target) return;
+      let ampm = hours >= 12 ? "pm" : "am";
 
-    if (parent) {
-      $target = $(input).closest(parent).find(target);
-    } else {
-      $target = $(target);
-    }
+      // hours = hours * 12;
 
-    if (!multiple) {
-      $target.empty();
-    }
+      seconds = ("0" + seconds).slice(-2);
 
-    if (input.files) {
-      let filesAmount = input.files.length;
+      minutes = ("0" + minutes).slice(-2);
 
-      for (i = 0; i < filesAmount; i++) {
-        let reader = new FileReader();
+      hours = hours >= 10 ? hours : ("0" + hours).slice(-2);
 
-        reader.onload = function (event) {
-          $($.parseHTML("<img>")).attr("src", event.target.result).appendTo($target);
-        };
+      $(this).html(getCountDownTemplate({
+        seconds,
 
-        reader.readAsDataURL(input.files[i]);
-      }
-    }
-  });
-});
+        minutes,
 
-/**
- * Download image
- *
- */
-$(function () {
-  const $previewInput = $(".js-input-preview");
+        hours,
 
-  if (!$previewInput.length) return;
+        days,
 
-  const $hiddenInput = $(".js-image-value");
-  const $section = $(".uploads");
+        ampm
+      }));
+    };
 
-  $previewInput.on("change", function () {
-    const el = document.querySelector(".uploads__image-outer");
-    const scale = 3;
+    buildClock();
 
-    setTimeout(() => {
-      domtoimage.toJpeg(el, {
-        width: el.clientWidth * scale,
-        height: el.clientHeight * scale,
-        style: {
-          transform: "scale(" + scale + ")",
-          "transform-origin": "top left"
-        }
-      }).then(dataUrl => {
-        $section.addClass("active");
-        $hiddenInput.val(dataUrl);
-      });
-    }, 300);
+    interval = setInterval(buildClock, 1000);
   });
 
-  $(".js-download-image").on("click", function (e) {
-    e.preventDefault();
+  function parseDate(s) {
+    var dateTime = s.split("T");
 
-    var imgData = $hiddenInput.val();
+    var dateBits = dateTime[0].split("-");
 
-    if (imgData) {
-      download([imgData]);
-      return;
-    }
+    var timeBits = dateTime[1].split(":");
 
-    console.log("No image data!");
-  });
-});
+    return new Date(dateBits[0], parseInt(dateBits[1]) - 1, dateBits[2], timeBits[0], timeBits[1], timeBits[2]).valueOf();
+  }
 
-function download(images) {
-  images.map(function (image) {
-    let link = document.createElement("a");
-    link.href = image;
-    link.download = "Download.jpg";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  });
-}
-
-/**
- * Calc and run progress bar
- * Change progress number
- */
-$(function () {
-  const $progress = $(".n-progress");
-
-  if (!$progress.length) return;
-
-  const duration = $progress.data("duration") || 2000;
-  const $number = $(".n-progress__number");
-  const $rotateImgs = $(".n-progress__img-2, .n-progress__img-3, .n-progress__light");
-
-  $number.find("span").countTo({
-    from: 0,
-    to: 100,
-    speed: duration,
-    refreshInterval: 5,
-    onUpdate: val => {
-      let deg = val * 360 / 100;
-
-      val = Math.ceil(val);
-
-      $rotateImgs.css("transform", `rotate(${deg}deg)`);
-
-      if (val >= 50) {
-        $progress.addClass("over-half");
-      }
-    },
-    onComplete: () => {
-      $progress.addClass("is-completed");
-    }
-  });
-});
-
-// toggle share btns
-$(function () {
-  $(".share-btns__toggle").on("click", function (e) {
-    e.preventDefault();
-
-    $(this).siblings(".share-btns__dropdown").fadeToggle("fast");
-  });
+  function getCountDownTemplate(timer = {}) {
+    return `
+<div class="countdown__item">
+    <div class="countdown__number">${timer.days}</div>
+    <div class="countdown__label">Ngày</div>
+</div>
+<div class="countdown__item">
+    <div class="countdown__number">${timer.hours}</div>
+    <div class="countdown__label">Giờ</div>
+</div>
+<div class="countdown__item">
+    <div class="countdown__number">${timer.minutes}</div>
+    <div class="countdown__label">Phút</div>
+</div>
+<div class="countdown__item">
+    <div class="countdown__number">${timer.seconds}</div>
+    <div class="countdown__label">Giây</div>
+</div>
+    `;
+  }
 });

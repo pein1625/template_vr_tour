@@ -10,110 +10,13 @@
     </head>
     <body>
         <!-- main content-->
-        <div class="popup" id="ALERT_MSG">
-            <div class="popup__content">
-                <p>Xin vui lòng nhấn và giữ <a href="https://giftingboutique.net">GIFTINGBOUTIQUE.NET</a><br>trong 2 giây để chuyển đổi trình duyệt phù hợp<br>Xin cám ơn!</p>
-            </div>
-        </div>
-        <div class="popup" id="MOBILE_CHECKER">
-            <div class="popup__content">
-                <div class="popup__icon"><img src="./images/rotate-mobile.png" alt=""></div>
-                <p>Vui lòng xoay ngang màn hình điện thoại<br>Để trải nghiệm một cách tốt nhất.<br>Xin cám ơn!</p>
-            </div>
-        </div>
-        <script type="text/javascript">
-            checkBrowser();
-
-            function checkBrowser()
-            {
-                var browserName = (function(agent)
-                {
-                    switch (true)
-                    {
-                        case agent.indexOf("edge") > -1:
-                            return "MS Edge";
-                        case agent.indexOf("edg/") > -1:
-                            return "Edge ( chromium based)";
-                        case agent.indexOf("opr") > -1 && !!window.opr:
-                            return "Opera";
-                        case agent.indexOf("chrome") > -1 && !!window.chrome:
-                            return "Chrome";
-                        case agent.indexOf("trident") > -1:
-                            return "MS IE";
-                        case agent.indexOf("firefox") > -1:
-                            return "Mozilla Firefox";
-                        case agent.indexOf("safari") > -1:
-                            return "Safari";
-                        case agent.indexOf("fban") > -1:
-                            return "FBAN";
-                        case agent.indexOf("fbav") > -1:
-                            return "FBAV";
-                        default:
-                            return "other";
-                    }
-                })(window.navigator.userAgent.toLowerCase());
-                console.log(browserName);
-                // Check available brownser
-                if (browserName === "other")
-                {
-                    var alertmsg = document.getElementById("ALERT_MSG");
-                    if (alertmsg)
-                    {
-                        alertmsg.classList.add('show');
-                    }
-                    return;
-                }
-                // Check portrait or landscape rotation
-                if (window.innerWidth > 1200)
-                {
-                    return;
-                }
-                checkRotation();
-                window.addEventListener("orientationchange", checkRotation, false);
-                window.addEventListener("resize", checkRotation, false);
-            }
-            var previousOrientation = window.orientation;
-
-            function checkRotation()
-            {
-                if (window.orientation === previousOrientation)
-                {
-                    return;
-                }
-                previousOrientation = window.orientation;
-                var rotationAlert = document.getElementById('MOBILE_CHECKER');
-                var body = document.querySelector('body');
-                if (!rotationAlert) return;
-                if (window.orientation % 180 === 0)
-                {
-                    rotationAlert.classList.add('show');
-                    body.classList.add('overflow-hidden');
-                    return;
-                }
-                rotationAlert.classList.remove('show');
-                body.classList.remove('overflow-hidden');
-            }
-
-        </script>
         <section>
             <div class="container">
-                <div class="ratio ratio-16x9 my-60 border popup-mobile-size" style="max-width: 1160px; margin: 0 auto;">
-                    <iframe src="./product-detail.html"></iframe>
-                </div>
-                <div class="ratio ratio-16x9 my-60 popup-mobile-size" style="max-width: 1160px; margin: 0 auto;">
-                    <iframe src="./intro.html"></iframe>
+                <div class="ratio ratio-16x9 my-60 popup-mobile-size">
+                    <iframe src="./welcome.html"></iframe>
                 </div>
                 <div class="ratio ratio-16x9 my-60 popup-mobile-size">
-                    <iframe src="./favourite.html"></iframe>
-                </div>
-                <div class="ratio ratio-16x9 my-60 popup-mobile-size">
-                    <iframe src="./videos.html"></iframe>
-                </div>
-                <div class="ratio ratio-16x9 my-60 popup-mobile-size">
-                    <iframe src="./vong-quay-1.html"></iframe>
-                </div>
-                <div class="ratio ratio-16x9 my-60 popup-mobile-size">
-                    <iframe src="./uploads.html"></iframe>
+                    <iframe src="./countdown.html"></iframe>
                 </div>
             </div>
         </section>
