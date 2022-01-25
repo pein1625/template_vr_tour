@@ -236,6 +236,15 @@
         margin: 3em auto 0;
       }
     }
+
+    &__time {
+      .text-gradient {
+        color: #BD9F6B !important;
+        background: 0 !important;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+      }
+    }
   }
 
   @media (max-width: 767px) {
