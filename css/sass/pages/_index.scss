@@ -123,6 +123,21 @@
     }
   }
 
+  &__forgot-password {
+    text-align: center;
+    color: #CAAA72;
+    font-weight: 300;
+    font-size: 0.85em;
+    margin-top: 1.5em;
+    opacity: 0.9;
+
+    &:hover {
+      color: #CAAA72;
+      text-decoration: none;
+      opacity: 1;
+    }
+  }
+
   &__btn {
     @include btn("shine");
     font-size: 0.9em;
@@ -135,12 +150,60 @@
     background: linear-gradient(to right bottom, #6a5a3f, #af9466);
     box-shadow: 0 1px 8px rgba(#fff, 0.08);
     transition: 0.6s;
-    margin-top: 3em;
+    margin-top: 1.5em;
 
     &:hover {
       box-shadow: 0 3px 15px rgba(#fff, 0.1);
       transform: translateY(-5px);
       color: #000;
+    }
+  }
+
+  &__message {
+    font-size: 1.4em;
+    line-height: 1.3;
+    padding: 0.5em 4em;
+    border-radius: 2em;
+    text-align: center;
+    background: linear-gradient(to right, #2F281B, #3A3121, #2F281B);
+    border: 4px solid #8D7653;
+    position: relative;
+    z-index: 1;
+    color: #D0AF75;
+
+    a {
+      color: #D0AF75;
+
+      &:hover {
+        color: darken(#D0AF75, 10%);
+      }
+    }
+  }
+
+  &__message-close {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    top: 50%;
+    right: 1.5em;
+    transform: translate(50%, -50%);
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      width: 1em;
+      height: 1px;
+      background-color: currentColor;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
     }
   }
 
@@ -218,6 +281,10 @@
     &__box {
       font-size: 0.9em;
     }
+
+    &__message {
+      border-width: 2px;
+    }
   }
 
   @media (max-width: 1399px) {
@@ -227,6 +294,14 @@
       &--2 {
         width: 350px;
       }
+    }
+
+    &__forgot-password {
+      margin-top: 1em;
+    }
+
+    &__btn {
+      margin-top: 1em;
     }
   }
 
@@ -261,6 +336,12 @@
     &__box {
       font-size: 1em;
       padding: 2em 1.5em 3.5em;
+    }
+
+    &__message {
+      font-size: 1em;
+      padding-right: 3em;
+      padding-left: 3em;
     }
   }
 }
